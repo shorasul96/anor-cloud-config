@@ -1,23 +1,7 @@
 server:
   port: 8010
 
-testServer:
-  app:
-    ip: 192.168.158.107
-  database:
-    ip: 192.168.158.108
-
-
 spring:
-
-  boot:
-    admin:
-      client:
-        url:
-          - http://${testServer.app.ip}:7700
-        username: root
-        password: corelife3134
-
   application:
     name: CLIENT-SERVICE
 
@@ -32,16 +16,6 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-
-eureka:
-  instance:
-    preferIpAddress: true
-    hostname: ${testServer.app.ip}
-  client:
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:8761/eureka
 
 security:
   oauth2:
@@ -64,20 +38,7 @@ feign:
         connectTimeout: 120000
         readTimeout: 120000
 
-
-app:
-  client:
-    id: anor
-    secret: anorbank2021
-  build:
-    name: client-service-ms
-
-host:
-  full:
-    dns:
-      auth:
-        link: http://${testServer.app.ip}:8080/api/auth-service
-
-auth:
-  server:
-    schem: http
+swagger:
+  endpoint:
+    host: ${testServer.app.ip}:8080
+    url: /api/client-service

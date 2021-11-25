@@ -1,2 +1,3 @@
-config-serer:
-  testing: "hello world"
+spring:
+  config:
+    import: optional:configserver:http://${testServer.app.ip}:8888/

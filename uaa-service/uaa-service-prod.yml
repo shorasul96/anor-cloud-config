@@ -1,0 +1,62 @@
+server:
+  port: 8089
+
+testServer:
+  app:
+    ip: 192.168.158.107
+  database:
+    ip: 192.168.158.108
+
+spring:
+
+  application:
+    name: UAA-SERVICE
+
+  boot:
+    admin:
+      client:
+        url:
+          - http://${testServer.app.ip}:7700
+        username: root
+        password: corelife3134
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${testServer.database.ip}:5432/uaa-service
+    username: postgres
+    password: 123
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+eureka:
+  instance:
+    preferIpAddress: true
+    hostname: ${testServer.app.ip}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka
+
+
+rabbitmq:
+  host: 192.168.158.47
+  port: 5672
+  username: admin
+  password: qazwsx123
+
+sms:
+  in-server:
+    url: http://10.7.4.205:8572/api/v1/message/send
+  out-server:
+    url: http://195.158.4.138:8572/api/v1/message/send
+
+
+swagger:
+  endpoint:
+    host: ${testServer.app.ip}:8080
+    url: /api/auth-service

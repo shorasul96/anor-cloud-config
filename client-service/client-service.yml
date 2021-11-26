@@ -4,7 +4,7 @@ server:
 spring:
 
   application:
-    name: CLIENT-SERVICE-DEV
+    name: client-service-dev
 
 
   datasource:

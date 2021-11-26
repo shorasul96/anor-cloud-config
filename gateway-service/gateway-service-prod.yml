@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: GATEWAY-SERVICE
+    name: gateway-service
 
   cloud:
     loadbalancer:
@@ -23,48 +23,48 @@ spring:
         connect-timeout: 1000
         response-timeout: 10s
       routes:
-        - id: UAA-SERVICE
-          uri: lb://UAA-SERVICE
+        - id: uaa-service
+          uri: lb://uaa-service
           predicates:
             - Path=/api/auth-service/**
           filters:
             - StripPrefix=2
             - name: CircuitBreaker
               args:
-                name: UAA-SERVICE
+                name: uaa-service
                 fallbackuri: forward:/uaaServiceFallBack
 
-        - id: CLIENT-SERVICE
-          uri: lb://CLIENT-SERVICE
+        - id: client-service
+          uri: lb://client-service
           predicates:
             - Path=/api/client-service/**
           filters:
             - StripPrefix=2
             - name: CircuitBreaker
               args:
-                name: CLIENT-SERVICE
+                name: client-service
                 fallbackuri: forward:/clientServiceFallBack
 
-        - id: PRODUCT-SERVICE
-          uri: lb://PRODUCT-SERVICE
+        - id: product-service
+          uri: lb://product-service
           predicates:
             - Path=/api/product-service/**
           filters:
             - StripPrefix=2
             - name: CircuitBreaker
               args:
-                name: PRODUCT-SERVICE
+                name: product-service
                 fallbackuri: forward:/productServiceFallBack
 
-        - id: SWAGGER-SERVICE
-          uri: lb://SWAGGER-SERVICE
+        - id: swagger-service
+          uri: lb://swagger-service
           predicates:
             - Path=/api/swagger-service/**
           filters:
             - StripPrefix=1
             - name: CircuitBreaker
               args:
-                name: SWAGGER-SERVICE
+                name: swagger-service
                 fallbackuri: forward:/swaggerServiceFallBack
 
 hystrix:

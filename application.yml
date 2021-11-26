@@ -13,11 +13,9 @@ spring:
     admin:
       client:
         url:
-          - http://${testServer.app.ip}:7700
+          - http://admin-service:7700
         username: root
         password: corelife3134
-#        instance:
-#          service-base-url: http://${testServer.app.ip}:7700
 
   lifecycle:
     timeout-per-shutdown-phase: 1m
@@ -25,12 +23,12 @@ spring:
 eureka:
   instance:
     preferIpAddress: true
-    hostname: ${testServer.app.ip}
+    hostname: registry-service
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:8761/eureka
+      defaultZone: http://registry-service:8761/eureka
 
 
 management:

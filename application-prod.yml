@@ -13,7 +13,7 @@ spring:
     admin:
       client:
         url:
-          - http://admin-service:7700
+          - http://${testServer.app.ip}:7700
         username: root
         password: corelife3134
 

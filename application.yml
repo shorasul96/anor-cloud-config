@@ -13,7 +13,7 @@ spring:
     admin:
       client:
         url:
-          - http://admin-service:7700
+          - http://${testServer.app.ip}:7700
         username: root
         password: corelife3134
 
@@ -23,12 +23,12 @@ spring:
 eureka:
   instance:
     preferIpAddress: true
-    hostname: registry-service
+    hostname: registry-service-dev
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://registry-service:8761/eureka
+      defaultZone: http://registry-service-dev:8761/eureka
 
 
 management:

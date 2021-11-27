@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: UAA-SERVICE-DEV
+    name: uaa-service-dev
 
   datasource:
     driver-class-name: org.postgresql.Driver

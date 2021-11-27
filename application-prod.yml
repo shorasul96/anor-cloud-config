@@ -3,9 +3,9 @@ server:
 
 testServer:
   app:
-    ip: localhost
+    ip: 192.168.158.107
   database:
-    ip: localhost
+    ip: 192.168.158.108
 
 spring:
 

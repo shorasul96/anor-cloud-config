@@ -1,7 +1,11 @@
 server:
   port: 9090
   shutdown: graceful
+
 spring:
   application:
     name: swagger-service
 
+swagger:
+  config:
+    refreshrate: 30000

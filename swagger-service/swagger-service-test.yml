@@ -3,5 +3,5 @@ server:
   shutdown: graceful
 spring:
   application:
-    name: swagger-service-dev
+    name: swagger-service-test
 

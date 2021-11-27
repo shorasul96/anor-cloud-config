@@ -23,12 +23,12 @@ spring:
 eureka:
   instance:
     preferIpAddress: true
-    hostname: registry-service-dev
+    hostname: ${testServer.app.ip}
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://registry-service-dev:8761/eureka
+      defaultZone: http://${testServer.app.ip}:8761/eureka
 
 
 management:

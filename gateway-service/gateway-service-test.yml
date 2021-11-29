@@ -48,7 +48,7 @@ spring:
         - id: swagger-service-test
           uri: lb://swagger-service-test
           predicates:
-            - Path=/test/swagger-service/**
+            - Path=/test/**
           filters:
             - StripPrefix=1
             - name: CircuitBreaker

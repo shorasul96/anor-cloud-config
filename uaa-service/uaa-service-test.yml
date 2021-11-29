@@ -33,4 +33,4 @@ sms:
 swagger:
   endpoint:
     host: ${testServer.app.ip}:8080
-    url: /api/auth-service
+    url: /test/auth-service

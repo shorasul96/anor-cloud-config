@@ -1,0 +1,44 @@
+server:
+  port: 8010
+
+spring:
+  application:
+    name: client-service-test
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${testServer.database.ip}:5432/client-service
+    username: postgres
+    password: 123
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+security:
+  oauth2:
+    resource:
+      link: http://${testServer.app.ip}:8080/test/auth-service
+      token-info-uri: ${security.oauth2.resource.link}/oauth/check_token
+    client:
+      client-id: anor
+      client-secret: anorbank2021
+
+
+refresh:
+  scope:
+    version: 0.0.2
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 120000
+        readTimeout: 120000
+
+swagger:
+  endpoint:
+    host: ${testServer.app.ip}:8080
+    url: /test/client-service

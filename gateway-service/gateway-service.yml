@@ -23,38 +23,27 @@ spring:
         connect-timeout: 1000
         response-timeout: 10s
       routes:
-        - id: uaa-service
-          uri: lb://uaa-service
+        - id: uaa-service-dev
+          uri: lb://uaa-service-dev
           predicates:
-            - Path=/api/auth-service/**
+            - Path=/dev/auth-service/**
           filters:
             - StripPrefix=2
             - name: CircuitBreaker
               args:
-                name: uaa-service
+                name: uaa-service-dev
                 fallbackuri: forward:/uaaServiceFallBack
 
-        - id: client-service
-          uri: lb://client-service
+        - id: client-service-dev
+          uri: lb://client-service-dev
           predicates:
             - Path=/api/client-service/**
           filters:
             - StripPrefix=2
             - name: CircuitBreaker
               args:
-                name: client-service
+                name: client-service-dev
                 fallbackuri: forward:/clientServiceFallBack
-
-        - id: product-service
-          uri: lb://product-service
-          predicates:
-            - Path=/api/product-service/**
-          filters:
-            - StripPrefix=2
-            - name: CircuitBreaker
-              args:
-                name: product-service
-                fallbackuri: forward:/productServiceFallBack
 
         - id: swagger-service
           uri: lb://swagger-service
